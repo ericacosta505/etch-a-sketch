@@ -1,0 +1,29 @@
+body {
+    width: 100%;
+    background-color: gray;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 512px;
+    height: 512px;
+    background-color: white;
+}
+
+.grid-square {
+    border: 1px solid gray;
+    box-sizing: border-box;
+  }
+
