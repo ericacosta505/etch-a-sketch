@@ -10,12 +10,16 @@ for (let i = 0; i < 256; i++) {
 }
 
 //Allows initial grid to be drawn on
-const gridsquare = document.querySelectorAll('.grid-square')
-for (let i = 0; i < gridsquare.length; i++) {
-    gridsquare[i].addEventListener('mouseover', () => {
-        gridsquare[i].style.backgroundColor = 'red'
-    })
+function draw() {
+    const gridsquare = document.querySelectorAll('.grid-square')
+    for (let i = 0; i < gridsquare.length; i++) {
+        gridsquare[i].addEventListener('mouseover', () => {
+            gridsquare[i].style.backgroundColor = 'black'
+        })
+    }
 }
+
+draw()
 
 //In the case users want to change the size of the grid, they can
 //click the 'grid size' button and enter a new size
@@ -32,13 +36,46 @@ gridsize.addEventListener('click', () => {
     makeGrid(size)
 
     //Allows user to draw on the new grid
+    draw()
+})
+
+
+//Handles clearing the canvas on button click
+const clear = document.querySelector('.clear-canvas')
+clear.addEventListener('click', () => {
+    const gridsquare = document.querySelectorAll('.grid-square')
+    for (let i = 0; i < gridsquare.length; i++) {
+        gridsquare[i].style.backgroundColor = 'white'
+    }
+})
+
+//Handles changing the pen color to black when button is clicked
+const black = document.querySelector('.black-pen')
+black.addEventListener('click', () => {
     const gridsquare = document.querySelectorAll('.grid-square')
     for (let i = 0; i < gridsquare.length; i++) {
         gridsquare[i].addEventListener('mouseover', () => {
-            gridsquare[i].style.backgroundColor = 'red'
+            gridsquare[i].style.backgroundColor = 'black'
         })
     }
 })
+
+//Handles changing the pen color to rainbow when button is clicked
+const rainbow = document.querySelector('.rainbow-pen')
+rainbow.addEventListener('click', () => {
+    const gridsquare = document.querySelectorAll('.grid-square')
+    for (let i = 0; i < gridsquare.length; i++) {
+        gridsquare[i].addEventListener('mouseover', () => {
+
+            const randomR = Math.floor(Math.random() * 256)
+            const randomG = Math.floor(Math.random() * 256)
+            const randomB = Math.floor(Math.random() * 256)
+            gridsquare[i].style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`
+        })
+    }
+})
+
+
 
 //Allows user to change the number of squares in the grid while retaining the initial grid size
 function makeGrid(num) {
